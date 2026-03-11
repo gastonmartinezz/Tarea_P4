@@ -1,4 +1,4 @@
-#include <.h/DTFecha.h>;
+#include ".h/DTFecha.h"
 
 //Falta implementacion del constructor
 int DTFecha::getDia() {
