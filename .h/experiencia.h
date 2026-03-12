@@ -1,6 +1,9 @@
-using namespace std;
+#ifndef EXPERIENCIA_H
+#define EXPERIENCIA_H
 
 #include <string>
+#endifusing namespace std;
+
 #include <set>
 #include "DTFecha.h"
 #include "DTExpe.h"
@@ -20,6 +23,7 @@ class Experiencia {
         Experiencia(string codReserva, string descripcion, int precio, DTFecha fecha);
         virtual ~Experiencia(); //virtual para poder destruir dependiendo de la experiencia
         virtual float calcularCosto() = 0;
+        virtual std::string getCodigoReserva() = 0;
         //DTExpe getDT();
         void agregarTurista(Turista* turista);
         void eliminarTurista(Turista* turista);
