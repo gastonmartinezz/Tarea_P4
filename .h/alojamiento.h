@@ -1,4 +1,5 @@
-
+#ifndef ALOJAMIENTO_H
+#define ALOJAMIENTO_H
 
 using namespace std;
 
@@ -19,3 +20,5 @@ class Alojamiento: public Experiencia {
         ~Alojamiento();
         float calcularCosto();
 };
+
+#endif

@@ -1,5 +1,3 @@
-#ifndef ALOJAMIENTO_H
-#define ALOJAMIENTO_H
 
 using namespace std;
 
@@ -27,4 +25,3 @@ float Alojamiento::calcularCosto(){
 Alojamiento::~Alojamiento(){
 }
 
-#endif
