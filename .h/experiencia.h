@@ -2,7 +2,7 @@
 #define EXPERIENCIA_H
 
 #include <string>
-#endifusing namespace std;
+using namespace std;
 
 #include <set>
 #include "DTFecha.h"
@@ -21,7 +21,7 @@ class Experiencia {
 
     public:
         Experiencia(string codReserva, string descripcion, int precio, DTFecha fecha);
-        virtual ~Experiencia(); //virtual para poder destruir dependiendo de la experiencia
+        virtual ~Experiencia();
         virtual float calcularCosto() = 0;
         virtual std::string getCodigoReserva() = 0;
         //DTExpe getDT();
@@ -37,3 +37,5 @@ class Experiencia {
         
 
 };
+
+#endif

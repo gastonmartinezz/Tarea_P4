@@ -39,11 +39,7 @@ void Experiencia::eliminarTurista(Turista* turista){
 }
 
 Experiencia::~Experiencia(){
-    set<Turista*>::iterator iter; 
-    for(iter = participantes.begin(); iter != participantes.end(); iter++){
-        if(*iter){
-            (*iter)->eliminarExperiencia(this);
-        }
-    }
+
     participantes.clear();
+
 }

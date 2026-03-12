@@ -1,3 +1,6 @@
+#ifndef ALOJAMIENTO_H
+#define ALOJAMIENTO_H
+
 using namespace std;
 
 #include ".h/alojamiento.h"
@@ -12,11 +15,16 @@ float Alojamiento::calcularCosto(){
     float total = 0;
     int pB = getPrecioBase();
 
-    if(){
-        total = (pB*cantNoches) + (cantNoches*10)
+    if(regimen == TipoRegimen::AllInclusive){
+        total = (pB*cantNoches) + (cantNoches*10);
     }else{
-        total = (pB*cantNoches)
+        total = (pB*cantNoches);
     }
 
     return total;
 }
+
+Alojamiento::~Alojamiento(){
+}
+
+#endif
