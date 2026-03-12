@@ -1,31 +1,43 @@
-OPC = -g -Wall -lstdc++ -std=c++11
+OPC = -g -Wall -std=c++11 -I.h
+CXX = g++
 
-output: main.o DTFecha.o DTExpe.o alojamiento.o eventoCultural.o experiencia.o tourGuiado.o turista.o
-	g++ main.o DTFecha.o DTExpe.o alojamiento.o eventoCultural.o experiencia.o tourGuiado.o turista.o -o output
+SRC_DIR = .cpp
 
-main.o: main.cpp DTFecha.h DTExpe.h alojamiento.h eventoCultural.h experiencia.h tipoRegimen.h tourGuiado.h turista.h
-	g++ $(OPC) -c main.cpp
+OBJ = build/main.o \
+      build/DTFecha.o \
+      build/DTExpe.o \
+      build/Alojamiento.o \
+      build/EventoCultural.o \
+      build/Experiencia.o \
+      build/TourGuiado.o \
+      build/Turista.o
 
-DTFecha.o: DTFecha.cpp DTFecha.h
-	g++ $(OPC) -c DTFecha.cpp
+output: $(OBJ)
+	$(CXX) $(OBJ) -o output
 
-DTIExpe.o: DTExpe.cpp DTExpe.h
-	g++ $(OPC) -c DTExpe.cpp
+build/main.o: main.cpp
+	$(CXX) $(OPC) -c main.cpp -o build/main.o
 
-alojamiento.o: Alojamiento.cpp alojamiento.h experiencia.h
-	g++ $(OPC) -c Alojamiento.cpp
+build/DTFecha.o: $(SRC_DIR)/DTFecha.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/DTFecha.cpp -o build/DTFecha.o
 
-eventoCultural.o: EventoCultural.cpp eventoCultural.h alojamiento.h
-	g++ $(OPC) -c EventoCultural.cpp
+build/DTExpe.o: $(SRC_DIR)/DTExpe.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/DTExpe.cpp -o build/DTExpe.o
 
-experiencia.o: Experiencia.cpp experiencia.h
-	g++ $(OPC) -c Experiencia.cpp
+build/Alojamiento.o: $(SRC_DIR)/Alojamiento.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/Alojamiento.cpp -o build/Alojamiento.o
 
-tourGuiado.o: TourGuiado.cpp tourGuiado.h experiencia.h
-	g++ $(OPC) -c TourGuiado.cpp
+build/EventoCultural.o: $(SRC_DIR)/EventoCultural.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/EventoCultural.cpp -o build/EventoCultural.o
 
-turista.o: Turista.cpp turista.h
-	g++ $(OPC) -c Turista.cpp
+build/Experiencia.o: $(SRC_DIR)/Experiencia.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/Experiencia.cpp -o build/Experiencia.o
+
+build/TourGuiado.o: $(SRC_DIR)/TourGuiado.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/TourGuiado.cpp -o build/TourGuiado.o
+
+build/Turista.o: $(SRC_DIR)/Turista.cpp
+	$(CXX) $(OPC) -c $(SRC_DIR)/Turista.cpp -o build/Turista.o
 
 clean:
-	rm *.o output
+	rm -f build/*.o output
