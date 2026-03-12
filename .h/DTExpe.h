@@ -1,6 +1,7 @@
 #include <string>
 #include "DTFecha.h"
 #include <set>
+#include <ostream>
 using namespace std;
 
 class DTExpe {
@@ -8,9 +9,9 @@ private:
     string codigoReserva, descripcion;
     DTFecha fecha;
     set<string> turistas;
-    DTExpe(); //falta realizar constructor
 public:
+    DTExpe(string, string, DTFecha, set<string>);
     string getCodigoReserva();
     string getDescripcion();
-    DTFecha getFecha(); // falta completar return de DTFecha
+    DTFecha getFecha();
 };
