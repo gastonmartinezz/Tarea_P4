@@ -15,6 +15,9 @@ OBJ = build/main.o \
 output: $(OBJ)
 	$(CXX) $(OBJ) -o output
 
+valgrind: output
+	valgrind --leak-check=full --track-origins=yes ./output
+
 build/main.o: main.cpp
 	$(CXX) $(OPC) -c main.cpp -o build/main.o
 
@@ -41,6 +44,3 @@ build/Turista.o: $(SRC_DIR)/Turista.cpp
 
 clean:
 	rm -f build/*.o output
-
-valgrind: output
-	valgrind --leak-check=full --track-origins=yes ./output
