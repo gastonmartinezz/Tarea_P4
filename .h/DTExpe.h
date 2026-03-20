@@ -2,18 +2,18 @@
 #define DTEXPE_H
 
 #include <string>
-#include "DTFecha.h"
 #include <set>
-#include<iostream>
-
-//#include <ostream>
+#include <iostream>
 using namespace std;
+
+#include "DTFecha.h"
 
 class DTExpe {
 private:
     string codigoReserva, descripcion;
     DTFecha fecha;
     set<string> turistas;
+
 public:
     DTExpe(string, string, DTFecha, set<string>);
     string getCodigoReserva();

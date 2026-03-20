@@ -52,8 +52,21 @@ void Experiencia::eliminarTurista(Turista* turista){
     participantes.erase(turista);
 }
 
+int Experiencia::contarTuristas(){
+
+    set<Turista*>::iterator iter;
+    int contador = 0;
+
+    for(iter = participantes.begin(); iter != participantes.end(); iter++){
+        contador =+ 1;
+    }
+
+    return contador;
+}
+
 Experiencia::~Experiencia(){
 
     participantes.clear();
 
 }
+

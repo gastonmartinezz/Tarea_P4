@@ -1,3 +1,10 @@
-enum class TipoRegimen {
-    AllInclusive, MediaPension
+#ifndef TIPOREGIMEN_H
+#define TIPOREGIMEN_H
+
+enum class TipoRegimen
+{
+    AllInclusive,
+    MediaPension
 };
+
+#endif

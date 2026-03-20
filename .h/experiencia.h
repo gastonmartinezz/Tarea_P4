@@ -32,6 +32,7 @@ class Experiencia {
         int getPrecioBase();
         DTFecha getFecha();
         set<Turista*> getTuristas(); 
+        int contarTuristas();
         
 
 };
