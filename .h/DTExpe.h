@@ -1,7 +1,12 @@
+#ifndef DTEXPE_H
+#define DTEXPE_H
+
 #include <string>
 #include "DTFecha.h"
 #include <set>
-#include <ostream>
+#include<iostream>
+
+//#include <ostream>
 using namespace std;
 
 class DTExpe {
@@ -14,4 +19,9 @@ public:
     string getCodigoReserva();
     string getDescripcion();
     DTFecha getFecha();
+    set<string> getTuristas();
 };
+
+ostream& operator<<(ostream& os, DTExpe& dt);
+
+#endif
