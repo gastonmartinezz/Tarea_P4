@@ -17,7 +17,7 @@ bool EventoCultural::getUsoCupon(){
 float EventoCultural::calcularCosto(){
     float total = 0;
     int pB = getPrecioBase();
-    int cantTuristas = static_cast<int>(getTuristas().size());
+    int cantTuristas = contarTuristas();
 
     if (getUsoCupon()) total = (pB * cantTuristas) - (5 * cantTuristas);
     else total = (pB * cantTuristas);

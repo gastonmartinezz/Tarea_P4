@@ -9,7 +9,7 @@
 #include "turista.h"
 #include "DTExpe.h"
 #include "DTFecha.h"
-#include "tourGuiado.h"
+// #include "tourGuiado.h"
 
 using namespace std;
 
@@ -37,7 +37,7 @@ void parte_a()
 {
     Alojamiento *aloj1 = new Alojamiento("ALX5489", "Hotel moderno", 30, DTFecha(18, 5, 2020), "Hotel Lindorf", TipoRegimen::AllInclusive, 5);
 
-    Alojamiento *aloj2 = new Alojamiento("ALJ4789", "Todas las habitaciones con vista al mar ", 100, DTFecha(10, 2, 2025), "Hotel SeaView", TipoRegimen::MediaPension, 15);
+    Alojamiento *aloj2 = new Alojamiento("ALJ4789 ", "Todas las habitaciones con vista al mar ", 100, DTFecha(10, 2, 2025), "Hotel SeaView", TipoRegimen::MediaPension, 15);
 
     coleccion_guardarExpe(aloj1);
     coleccion_guardarExpe(aloj2);
@@ -45,13 +45,14 @@ void parte_a()
 
 void parte_b()
 {
-    TourGuiado* tour1 = new TourGuiado("Paseos SA", {"Plaza Indpendencia", "Plaza Matriz"}, "TGO4657", "Plaza de Montevideo", 10, DTFecha(29,8,2024));
+    /*
+    TourGuiado* tour1 = new TourGuiado("TGO4657", "Plazas de Montevideo", 10, DTFecha(29,8,2024), "Paseos SA", {"Plaza Indpendencia", "Plaza Matriz"});
 
-    TourGuiado* tour2 = new TourGuiado("Recorrer", {"Puerta de la Ciudadela", "Mausoleo", "Cabildo", "Palacio Salvo"}, "TGR3257", "Puntos emblematicos", 5, DTFecha(29,8,2024) );
+    TourGuiado* tour2 = new TourGuiado("TGR3257", "Puntos emblematicos", 5, DTFecha(29,8,2024), "Recorrer", {"Puerta de la Ciudadela", "Mausoleo", "Cabildo", "Palacio Salvo"});
 
     coleccion_guardarExpe(tour1);
     coleccion_guardarExpe(tour2);
-
+    */
 }
 
 void parte_c()
@@ -125,10 +126,36 @@ void parte_g()
 
 void parte_h()
 {
+    map<string,Turista*>::iterator itTur;
+    itTur = map_turistas.find("4.951.278-9"); //Vanesa
+
+    DTFecha fechaDesde(10, 12, 2023);
+    set<string> experiencias = itTur->second->listarExperiencias(&fechaDesde, 0, 1000); //Listo cuales
+
+    for (const string &ahora : experiencias) //Imprimo
+    {
+        cout << ahora << endl;
+    }
 }
 
 void parte_i()
 {
+    map<string,Experiencia*>::iterator itExp;
+    itExp = map_experiencias.find("TGR3257");
+
+    if (itExp != map_experiencias.end()) //Me aseguro de que exista
+    {
+        set<Turista*>::iterator it;
+        for (it = itExp->second->getTuristas().begin(); it != itExp->second->getTuristas().end(); it++)
+        {
+            (*it)->eliminarExperiencia(itExp->second->getCodigoReserva());
+        }
+
+        experiencias.remove(itExp->second);
+        map_experiencias.erase(itExp);
+        (*itExp).second->~Experiencia();
+        delete itExp->second;
+    }
 }
 
 void parte_j()
