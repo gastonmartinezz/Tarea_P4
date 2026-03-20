@@ -1,34 +1,33 @@
 #include "tourGuiado.h"
 
-TourGuiado ::TourGuiado(string a, set<string> lv, string cr, string d, int pb, DTFecha f) : Experiencia(cr, d, pb, f) //Gaston: Corregi el <vector> por un <set> porque daba error de compilacion
-{
+// Implementamos contstructor
+TourGuiado::TourGuiado(string a, set<string> lv, string cr, string d, int pb, DTFecha f) : Experiencia(cr, d, pb, f) {
     this->agencia = a;
     this->lugaresVisitados = lv;
 }
 
-void TourGuiado ::setLugaresVisitados(set<string> lv) //Gaston: Corregi el <vector> por un <set> porque daba error de compilacion
-{
-    this->lugaresVisitados = lv;
-}
-
-string TourGuiado ::getAgencia()
-{
+// Implementamos getter para agencia
+string TourGuiado::getAgencia() {
     return this->agencia;
 }
 
-set<string> TourGuiado ::getLugaresVisitados() //Gaston: Corregi el <vector> por un <set> porque daba error de compilacion
-{
+// Implementamos getter para lugaresVisitados
+set<string> TourGuiado::getLugaresVisitados() {
     return this->lugaresVisitados;
 }
 
-float TourGuiado ::calcularCosto()
-{
-    float pb = (Experiencia::getPrecioBase());
+// Implementamos operacion
+// La operación calcula el precio base más 2 unidades,
+// multiplicado por la cantidad de lugares a visitar, 
+// multiplicado por la cantidad de turistas participantes
+float TourGuiado::calcularCosto() {
+    float pb = getPrecioBase();
     float lv = getLugaresVisitados().size();
-    float t = (Experiencia::getDT().getTuristas().size());
-    return ((pb + 2) * lv * t);
+    float ct = getTuristas().size();
+    float resultado = ((pb+2)*lv*ct);
+    return resultado;
 }
 
-TourGuiado ::~TourGuiado()
-{
+// No implementamos destructor jeje
+TourGuiado::~TourGuiado() {
 }

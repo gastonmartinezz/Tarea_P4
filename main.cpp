@@ -133,11 +133,25 @@ void parte_i()
 
 void parte_j()
 {
+    map<string,Turista*>::iterator itTur;
+    itTur = map_turistas.find("1.535.442-0");
+    if (itTur != map_turistas.end()) {
+        DTFecha desde(10, 10, 2020);
+        set<string> experienciasDesde = (*itTur).second->listarExperiencias(&desde, 0, 1000);
+        for (set<string>::iterator it = experienciasDesde.begin(); it != experienciasDesde.end(); it++) {
+            cout << *it << endl;
+        }
+    }
 }
 
 void parte_k()
 {
+    list<Experiencia*>::iterator it;
+    for (it = experiencias.begin(); it != experiencias.end(); it++) {
+        cout << (*it)->getDT() << endl;
+    }
 }
+
 
 void cleanUp()
 {
