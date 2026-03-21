@@ -154,7 +154,7 @@ void parte_i()
 
         experiencias.remove(itExp->second);
         map_experiencias.erase(itExp);
-        (*itExp).second->~Experiencia();
+        //(*itExp).second->~Experiencia();
         delete itExp->second;
     }
 }
@@ -186,8 +186,18 @@ void parte_k()
 }
 
 
-void cleanUp()
-{
+void cleanUp() {
+    for (list<Experiencia*>::iterator it = experiencias.begin(); it != experiencias.end(); ++it) {
+        delete *it;
+    }
+    experiencias.clear();
+    map_experiencias.clear();
+
+    for (list<Turista*>::iterator i = turistas.begin(); i != turistas.end(); ++i) {
+        delete *i;
+    }
+    turistas.clear();
+    map_turistas.clear();
 }
 
 int main()
