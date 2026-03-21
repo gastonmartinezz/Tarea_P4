@@ -9,7 +9,7 @@
 #include "turista.h"
 #include "DTExpe.h"
 #include "DTFecha.h"
-// #include "tourGuiado.h"
+#include "tourGuiado.h"
 
 using namespace std;
 
@@ -37,7 +37,7 @@ void parte_a()
 {
     Alojamiento *aloj1 = new Alojamiento("ALX5489", "Hotel moderno", 30, DTFecha(18, 5, 2020), "Hotel Lindorf", TipoRegimen::AllInclusive, 5);
 
-    Alojamiento *aloj2 = new Alojamiento("ALJ4789 ", "Todas las habitaciones con vista al mar ", 100, DTFecha(10, 2, 2025), "Hotel SeaView", TipoRegimen::MediaPension, 15);
+    Alojamiento *aloj2 = new Alojamiento("ALJ4789", "Todas las habitaciones con vista al mar ", 100, DTFecha(10, 2, 2025), "Hotel SeaView", TipoRegimen::MediaPension, 15);
 
     coleccion_guardarExpe(aloj1);
     coleccion_guardarExpe(aloj2);
@@ -45,14 +45,14 @@ void parte_a()
 
 void parte_b()
 {
-    /*
-    TourGuiado* tour1 = new TourGuiado("TGO4657", "Plazas de Montevideo", 10, DTFecha(29,8,2024), "Paseos SA", {"Plaza Indpendencia", "Plaza Matriz"});
+    
+    TourGuiado* tour1 = new TourGuiado("Paseos SA", {"Plaza Indpendencia", "Plaza Matriz"}, "TGO4657", "Plaza de Montevideo", 10, DTFecha(29,8,2024));
 
-    TourGuiado* tour2 = new TourGuiado("TGR3257", "Puntos emblematicos", 5, DTFecha(29,8,2024), "Recorrer", {"Puerta de la Ciudadela", "Mausoleo", "Cabildo", "Palacio Salvo"});
+    TourGuiado* tour2 = new TourGuiado("Recorrer", {"Puerta de la Ciudadela", "Mausoleo", "Cabildo", "Palacio Salvo"}, "TGR3257", "Puntos emblematicos", 5, DTFecha(29,8,2024) );
 
     coleccion_guardarExpe(tour1);
     coleccion_guardarExpe(tour2);
-    */
+    
 }
 
 void parte_c()
@@ -64,7 +64,12 @@ void parte_c()
 
 void parte_d()
 {
-    // La letra del Lab pide el mismo codigo que para la parte k
+    // Recorremos todas las Experiencias, e imprimimos el resultado de getDT() para cada uno
+    list<Experiencia*>::iterator it;
+    for (it = experiencias.begin(); it != experiencias.end(); it++) {
+        DTExpe exp = (*it)->getDT();
+        cout << exp << endl;
+    }
 }
 
 void parte_e()
@@ -97,31 +102,32 @@ void parte_g()
     itTur = map_turistas.find("4.951.278-9");
     
     itExp = map_experiencias.find("ALX5489");
-    (*itTur).second->agregarExperiencia((*itExp).second);
-    (*itExp).second->agregarTurista((*itTur).second);
+    itTur->second->agregarExperiencia(itExp->second);
+    itExp->second->agregarTurista(itTur->second);
+
 
     itExp = map_experiencias.find("ALJ4789");
-    (*itTur).second->agregarExperiencia((*itExp).second);
-    (*itExp).second->agregarTurista((*itTur).second);
+    itTur->second->agregarExperiencia(itExp->second);
+    itExp->second->agregarTurista(itTur->second);
 
     itExp = map_experiencias.find("TGR3257");
-    (*itTur).second->agregarExperiencia((*itExp).second);
-    (*itExp).second->agregarTurista((*itTur).second);
+    itTur->second->agregarExperiencia(itExp->second);
+    itExp->second->agregarTurista(itTur->second);
 
     itExp = map_experiencias.find("ECP1346");
-    (*itTur).second->agregarExperiencia((*itExp).second);
-    (*itExp).second->agregarTurista((*itTur).second);
+    itTur->second->agregarExperiencia(itExp->second);
+    itExp->second->agregarTurista(itTur->second);
 
     //ahora asociamos las experiencias a Karen Santos
     itTur = map_turistas.find("1.535.442-0");
 
     itExp = map_experiencias.find("TGO4657");
-    (*itTur).second->agregarExperiencia((*itExp).second);
-    (*itExp).second->agregarTurista((*itTur).second);
+    itTur->second->agregarExperiencia(itExp->second);
+    itExp->second->agregarTurista(itTur->second);
 
     itExp = map_experiencias.find("TGR3257");
-    (*itTur).second->agregarExperiencia((*itExp).second);
-    (*itExp).second->agregarTurista((*itTur).second);
+    itTur->second->agregarExperiencia(itExp->second);
+    itExp->second->agregarTurista(itTur->second);
 
 }
 
@@ -181,7 +187,8 @@ void parte_k()
     // Recorremos todas las Experiencias, e imprimimos el resultado de getDT() para cada uno
     list<Experiencia*>::iterator it;
     for (it = experiencias.begin(); it != experiencias.end(); it++) {
-        cout << (*it)->getDT() << endl;
+        DTExpe exp = (*it)->getDT();
+        cout << exp << endl;
     }
 }
 
