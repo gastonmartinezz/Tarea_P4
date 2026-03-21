@@ -3,11 +3,12 @@ using namespace std;
 
 #include "alojamiento.h"
 
-Alojamiento::Alojamiento(string codReserva, string descripcion, int precioBase, DTFecha fecha, string hotel, TipoRegimen regimen, int cantNoches) : Experiencia(codReserva, descripcion, precioBase, fecha){
-    hotel = hotel;
-    regimen = regimen;
-    cantNoches = cantNoches;
-}
+Alojamiento::Alojamiento(string codReserva, string descripcion, int precioBase,
+                         DTFecha fecha, string hotel, TipoRegimen regimen, int cantNoches)
+    : Experiencia(codReserva, descripcion, precioBase, fecha),
+      hotel(hotel),
+      regimen(regimen),
+      cantNoches(cantNoches){}
 
 float Alojamiento::calcularCosto(){
     float total = 0;
