@@ -156,8 +156,8 @@ void parte_i()
         string codigo = exp->getCodigoReserva();
 
         set<Turista*> turistasAsociados = (*exp).getTuristas();
-
-        for (set<Turista*>::iterator it = turistasAsociados.begin();
+        set<Turista*>::iterator it;
+        for ( it = turistasAsociados.begin();
              it != turistasAsociados.end();
              ++it)
         {

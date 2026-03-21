@@ -60,14 +60,11 @@ void Turista::agregarExperiencia(Experiencia *exp)
 
 // Método para eliminar una experiencia a la colección del turista.
 void Turista::eliminarExperiencia(string codReserva)
-{
-    set<Experiencia *>::iterator it;
-    for (it = experiencias.begin(); it != experiencias.end(); ++it)
-    {
-        if ((*it)->getCodigoReserva() == codReserva)
-        {
-            experiencias.erase(it);
-            break; // Terminamos una vez encontrada y eliminada
+{   
+    set<Experiencia*>::iterator it;
+    for (it = experiencias.begin(); it != experiencias.end(); it++){
+        if ((*it)->getCodigoReserva() == codReserva){
+            it = experiencias.erase(it);
         }
     }
 }

@@ -27,11 +27,13 @@ ostream& operator<<(ostream& os, DTExpe& dt) {
        << dt.getFecha().getMes() << "/" 
        << dt.getFecha().getAnio() << ")/";
 
+    set<string> turistas = dt.getTuristas();
     set<string>::iterator tourist;
-    for (tourist = dt.getTuristas().begin(); tourist != dt.getTuristas().end(); tourist++) {
+
+    for (tourist = turistas.begin(); tourist != turistas.end(); tourist++) {
         os << (*tourist);
 
-        if (tourist != dt.getTuristas().end()) {
+        if (tourist != turistas.end() && turistas.size()>1) {
             os << ",";
         }
     }
