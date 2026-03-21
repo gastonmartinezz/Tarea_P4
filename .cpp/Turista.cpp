@@ -38,12 +38,12 @@ set<string> Turista::listarExperiencias(DTFecha *desde, float min, float max) co
     set<string> resultado;
     set<Experiencia *>::iterator it;
 
-    for (it = experiencias.begin(); it != experiencias.end(); ++it)
+    for (it = experiencias.begin(); it != experiencias.end(); it++)
     {
         float costo = (*it)->calcularCosto();
 
         // Aquí comparamos el costo y la fecha
-        if (costo >= min && costo <= max)
+        if (costo >= min && costo <= max && (*it)->getFecha() >= (*desde))
         {
             // usamos un iterador it para acceder a cada experiencia y obtener su código de reserva.
             resultado.insert((*it)->getCodigoReserva());

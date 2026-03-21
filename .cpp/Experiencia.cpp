@@ -2,12 +2,12 @@
 
 using namespace std;
 
-Experiencia::Experiencia(string codReserva, string descripcion, int precio, DTFecha fecha){
-   codRes = codReserva;
-   desc = descripcion;
-   precioBase = precio;
-   fecha = fecha;
-   participantes = {};
+Experiencia::Experiencia(string codReserva, string descripcion, int precio, DTFecha fecha):
+   codRes(codReserva),
+   desc(descripcion),
+   precioBase(precio),
+   fecha(fecha){
+    participantes = {}; 
 }
 
 DTExpe Experiencia::getDT(){
